@@ -1,0 +1,80 @@
+<div class="user-details">
+
+<div *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div class="users" *ngIf="!isLoading">
+  
+  <div class="content-background">
+   <div class="initial-container">
+     {{userData?.firstName?.charAt(0)}}{{userData?.lastName?.charAt(0)?.toUpperCase()}}
+   </div>
+    <div >
+      <div class="name">
+        {{userData?.firstName}}
+        {{userData?.lastName}}
+      </div>
+     
+      <div class="address">
+        {{userData?.address?.line1}},
+        {{userData?.address?.line2}}
+        {{userData?.address?.line3}}
+    
+        {{userData?.address?.city}},
+        {{userData?.address?.county}},
+    
+        {{userData?.address?.postcode}}
+    
+      </div>
+    </div>
+    
+    
+
+  </div>
+  <h1>Update your details</h1>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="item-group">
+      <label>First name</label>
+      <input type="text"  formControlName="firstName"/>
+    </div>
+  
+    <div class="item-group">
+      <label>Last name</label>
+      <input type="text" formControlName="lastName" />    
+    </div>
+    <div formGroupName="address">
+
+    <div class="item-group">
+      <label>Address line 1</label>
+      <input type="text" formControlName="line1" required/>    
+    </div>
+  
+    <div class="item-group">
+      <label>Address line 2</label>
+      <input type="text" formControlName="line2"/>
+    </div>
+
+    <div class="item-group">
+      <label>Address line 3</label>
+      <input type="text" formControlName="line3"/>
+    </div>
+
+    <div class="item-group">
+      <label>City</label>
+      <input type="text" formControlName="city" required/> 
+    </div>
+  
+    <div class="item-group">
+      <label>County</label>
+      <input type="text" formControlName="county" required/>
+    </div>
+
+    <div class="item-group">
+      <label>Postcode</label>
+      <input type="text" formControlName="postcode" required/>
+    </div>
+    <button class="btn"type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+</div>

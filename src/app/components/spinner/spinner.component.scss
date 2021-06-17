@@ -1,0 +1,30 @@
+@import "../../styles/tools";
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  $size: 40px;
+
+  display: inline-block;
+  width: $size;
+  height: $size;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: $size - 16px;
+    height: $size - 16px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 4px solid $colour-primary;
+    border-color: $colour-primary transparent $colour-primary transparent;
+    animation: spinner 1.2s linear infinite;
+  }
+}
